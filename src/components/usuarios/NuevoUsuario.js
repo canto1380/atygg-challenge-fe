@@ -5,14 +5,9 @@ import {
   Row,
   Col,
   Button,
-  InputGroup,
-  Image,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import MsjError from "../../utils/messageError";
 
 import {
@@ -141,7 +136,6 @@ const NuevoUsuario = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (vApe && vNom && vEdad && vEmail && vClave && vReClave) {
-      console.log(usuario);
       setError(false);
       try {
         const config = {
@@ -154,8 +148,6 @@ const NuevoUsuario = (props) => {
         };
         const response = await fetch(urlAgregarUsuario, config);
         if (response.status === 201 || response.status === 200) {
-          console.log(typeof response.status);
-          console.log(typeof 201);
           Swal.fire("Usuario agregado correctamnete");
           e.target.reset();
           navigate("/usuarios");
@@ -174,6 +166,7 @@ const NuevoUsuario = (props) => {
       }
     } else {
       setError(true);
+      console.log(error)
       setErr1(true);
       setTimeout(() => {
         setErr1(false);

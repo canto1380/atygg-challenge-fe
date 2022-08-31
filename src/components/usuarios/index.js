@@ -18,7 +18,6 @@ const Usuarios = () => {
     setUsuarios(await usuariosAPI());
     setConsultaUsuarios(false)
   };
-  console.log(usuarios);
 
   return (
     <Container className="py-5 my-5">
